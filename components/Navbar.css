@@ -1,0 +1,246 @@
+.navbar {
+  background-color: #ffffff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-container .logo-befach {
+  color: #f29222;
+}
+
+.navbar-container .logo-international {
+  color: #513220;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-link {
+  color: #513220;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-link:hover {
+  color: #f29222;
+}
+
+/* Desktop Search Bar */
+.navbar-search-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  min-width: 250px;
+}
+
+.navbar-search-desktop:focus-within {
+  border-color: #f29222;
+  box-shadow: 0 0 0 3px rgba(242, 146, 34, 0.1);
+}
+
+.search-input-desktop {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #513220;
+  outline: none;
+}
+
+.search-input-desktop::placeholder {
+  color: #999;
+}
+
+.search-button-desktop {
+  background: transparent;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #513220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.search-button-desktop:hover {
+  color: #f29222;
+}
+
+/* Mobile Search Icon */
+.search-icon-mobile {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #513220;
+  transition: color 0.3s;
+  border-radius: 50%;
+}
+
+.search-icon-mobile:hover {
+  color: #f29222;
+  background-color: #f8f9fa;
+}
+
+/* Mobile Expanded Search Bar */
+.navbar-search-mobile-expanded {
+  display: none;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-form-mobile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.search-form-mobile:focus-within {
+  border-color: #f29222;
+  box-shadow: 0 0 0 3px rgba(242, 146, 34, 0.1);
+}
+
+.search-input-mobile {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #513220;
+  outline: none;
+}
+
+.search-input-mobile::placeholder {
+  color: #999;
+}
+
+.search-button-mobile {
+  background: transparent;
+  border: none;
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #513220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.search-button-mobile:hover {
+  color: #f29222;
+}
+
+.search-close-mobile {
+  background: transparent;
+  border: none;
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #513220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+  border-left: 1px solid #e0e0e0;
+}
+
+.search-close-mobile:hover {
+  color: #f29222;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .navbar-right {
+    gap: 1rem;
+  }
+  
+  .navbar-menu {
+    gap: 1rem;
+  }
+
+  /* Hide desktop search on mobile */
+  .navbar-search-desktop {
+    display: none;
+  }
+
+  /* Show mobile search icon */
+  .search-icon-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Show expanded search when active */
+  .navbar-search-mobile-expanded {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  .navbar-menu {
+    gap: 0.75rem;
+  }
+
+  .navbar-link {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,77 @@
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-diamond {
+  display: block;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logo-befach {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f29222;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1;
+}
+
+.logo-international {
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: #513220;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .logo-image {
+    height: 55px;
+  }
+  
+  .logo-befach {
+    font-size: 1.2rem;
+  }
+  
+  .logo-international {
+    font-size: 0.65rem;
+  }
+  
+  .logo-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
