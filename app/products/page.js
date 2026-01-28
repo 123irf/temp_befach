@@ -1,13 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import axios from 'axios'
 import './page.css'
 
 export default function Products() {
-  const searchParams = useSearchParams()
   const router = useRouter()
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
@@ -16,11 +15,14 @@ export default function Products() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    // Read search query from URL
-    const query = searchParams.get('q') || ''
-    setSearchQuery(query)
+    // Read search query from URL on client side only
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const query = params.get('q') || ''
+      setSearchQuery(query)
+    }
     fetchProducts()
-  }, [searchParams])
+  }, [])
 
   useEffect(() => {
     if (searchQuery.trim() === '') {

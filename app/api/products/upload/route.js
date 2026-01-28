@@ -68,10 +68,10 @@ const normalizeProduct = (row, index) => {
     name: getValue(row, ['name', 'product_name', 'product name', 'title', 'product']),
     description: getValue(row, ['description', 'product_description', 'product description', 'details']),
     price: parseFloat(getValue(row, ['price', 'product_price', 'product price', 'cost'])) || 0,
+    image: getValue(row, ['image_url', 'image url', 'image', 'picture', 'photo']),
     category: getValue(row, ['category', 'product_category', 'product category', 'type']),
     sku: getValue(row, ['sku', 'product_sku', 'product sku', 'code']),
     stock: parseInt(getValue(row, ['stock', 'quantity', 'inventory', 'stock_quantity'])) || 0,
-    image: getValue(row, ['image', 'image_url', 'image url', 'picture', 'photo']),
     createdAt: new Date().toISOString()
   }
 }

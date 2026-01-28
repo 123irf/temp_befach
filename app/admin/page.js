@@ -440,27 +440,27 @@ export default function Admin() {
               <div className="info-card">
                 <h3>Required Columns</h3>
                 <ul>
-                  <li>name (or product_name, product name, title, product)</li>
-                  <li>price (or product_price, product price, cost)</li>
+                  <li><strong>name</strong> - Product name</li>
+                  <li><strong>description</strong> - Product description</li>
+                  <li><strong>image_url</strong> - Direct image URL</li>
+                  <li><strong>price</strong> - Product price</li>
                 </ul>
               </div>
               <div className="info-card">
                 <h3>Optional Columns</h3>
                 <ul>
-                  <li>description (or product_description, details)</li>
-                  <li>category (or product_category, type)</li>
-                  <li>sku (or product_sku, code)</li>
-                  <li>stock (or quantity, inventory)</li>
-                  <li>image (or image_url, picture)</li>
+                  <li>category - Product category</li>
+                  <li>sku - Product SKU code</li>
+                  <li>stock - Stock quantity</li>
                 </ul>
               </div>
             </div>
             <div className="info-example">
               <h3>Example CSV Format:</h3>
               <pre>
-{`name,price,description,category,sku,stock
-"Product 1",99.99,"Description here","Category A","SKU001",100
-"Product 2",149.99,"Another product","Category B","SKU002",50`}
+{`name,description,image_url,price
+"Product 1","Description here","https://example.com/image1.jpg",99.99
+"Product 2","Another product","https://example.com/image2.jpg",149.99`}
               </pre>
             </div>
           </div>
