@@ -2,21 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import axios from 'axios'
-import { checkAuth, logout } from '@/lib/auth'
 import './page.css'
 
 export default function SliderAdmin() {
   const pathname = usePathname()
-  const router = useRouter()
   const [slides, setSlides] = useState([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
   const [message, setMessage] = useState(null)
   const [error, setError] = useState(null)
-  const [authenticated, setAuthenticated] = useState(false)
-  const [checkingAuth, setCheckingAuth] = useState(true)
   const [editingSlide, setEditingSlide] = useState(null)
   const [formData, setFormData] = useState({
     title: '',
@@ -25,25 +21,8 @@ export default function SliderAdmin() {
   })
 
   useEffect(() => {
-    verifyAuth()
-  }, [])
-
-  const verifyAuth = async () => {
-    const isAuth = await checkAuth()
-    if (!isAuth) {
-      router.push('/admin/login')
-      return
-    }
-    setAuthenticated(true)
-    setCheckingAuth(false)
     fetchSlides()
-  }
-
-  const handleLogout = async () => {
-    await logout()
-    router.push('/admin/login')
-    router.refresh()
-  }
+  }, [])
 
   const fetchSlides = async () => {
     try {
@@ -177,20 +156,6 @@ export default function SliderAdmin() {
     setFormData({ title: '', subtitle: '', image: null })
   }
 
-  if (checkingAuth) {
-    return (
-      <div className="slider-admin-page">
-        <div className="container">
-          <div className="slider-admin-loading">Checking authentication...</div>
-        </div>
-      </div>
-    )
-  }
-
-  if (!authenticated) {
-    return null
-  }
-
   if (loading) {
     return <div className="slider-admin-loading">Loading slider images...</div>
   }
@@ -203,9 +168,6 @@ export default function SliderAdmin() {
             <h1>Manage Hero Slider</h1>
             <p className="admin-subtitle">Upload and manage background images for the hero slider</p>
           </div>
-          <button onClick={handleLogout} className="btn-logout">
-            Logout
-          </button>
         </div>
 
         <div className="admin-menu">

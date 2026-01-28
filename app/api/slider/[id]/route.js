@@ -1,7 +1,15 @@
 import fs from 'fs'
 import path from 'path'
 
-const dataDir = path.join(process.cwd(), '../../../../data')
+// Use /tmp directory for Vercel serverless functions (writable)
+const dataDir = process.env.VERCEL 
+  ? path.join('/tmp', 'data')
+  : path.join(process.cwd(), '../../../../data')
+
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true })
+}
+
 const sliderFile = path.join(dataDir, 'slider.json')
 
 const readSlider = () => {

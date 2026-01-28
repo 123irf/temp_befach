@@ -2,22 +2,18 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import axios from 'axios'
-import { checkAuth, logout } from '@/lib/auth'
 import './page.css'
 
 const ITEMS_PER_PAGE = 25
 
 export default function Admin() {
   const pathname = usePathname()
-  const router = useRouter()
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
   const [message, setMessage] = useState(null)
   const [error, setError] = useState(null)
-  const [authenticated, setAuthenticated] = useState(false)
-  const [checkingAuth, setCheckingAuth] = useState(true)
   
   // Product list state
   const [products, setProducts] = useState([])
@@ -28,25 +24,11 @@ export default function Admin() {
   const selectAllCheckboxRef = useRef(null)
 
   useEffect(() => {
-    verifyAuth()
-  }, [])
-
-  const verifyAuth = async () => {
-    const isAuth = await checkAuth()
-    if (!isAuth) {
-      router.push('/admin/login')
-      return
-    }
+    // Skip authentication check - admin is open
     setAuthenticated(true)
     setCheckingAuth(false)
     fetchProducts()
-  }
-
-  const handleLogout = async () => {
-    await logout()
-    router.push('/admin/login')
-    router.refresh()
-  }
+  }, [])
 
   const fetchProducts = async () => {
     try {
@@ -230,20 +212,6 @@ export default function Admin() {
     }
   }, [someCurrentPageSelected, allCurrentPageSelected])
 
-  if (checkingAuth) {
-    return (
-      <div className="admin-page">
-        <div className="container">
-          <div className="loading">Checking authentication...</div>
-        </div>
-      </div>
-    )
-  }
-
-  if (!authenticated) {
-    return null
-  }
-
   return (
     <div className="admin-page">
       <div className="container">
@@ -252,9 +220,6 @@ export default function Admin() {
             <h1>Admin Panel</h1>
             <p className="admin-subtitle">Manage your B2B platform</p>
           </div>
-          <button onClick={handleLogout} className="btn-logout">
-            Logout
-          </button>
         </div>
         
         <div className="admin-menu">
