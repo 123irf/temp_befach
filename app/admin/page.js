@@ -24,9 +24,6 @@ export default function Admin() {
   const selectAllCheckboxRef = useRef(null)
 
   useEffect(() => {
-    // Skip authentication check - admin is open
-    setAuthenticated(true)
-    setCheckingAuth(false)
     fetchProducts()
   }, [])
 
